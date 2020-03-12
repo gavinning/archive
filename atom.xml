@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://stage.vip</id>
-    <title>Gridea</title>
-    <updated>2020-03-12T09:26:22.861Z</updated>
+    <title>F4</title>
+    <updated>2020-03-12T11:31:58.834Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://stage.vip"/>
     <link rel="self" href="http://stage.vip/atom.xml"/>
     <subtitle>温故而知新</subtitle>
     <logo>http://stage.vip/images/avatar.png</logo>
     <icon>http://stage.vip/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
+    <rights>All rights reserved 2020, F4</rights>
+    <entry>
+        <title type="html"><![CDATA[测试文章]]></title>
+        <id>http://stage.vip/post/demo/</id>
+        <link href="http://stage.vip/post/demo/">
+        </link>
+        <updated>2020-03-12T11:27:06.000Z</updated>
+        <summary type="html"><![CDATA[<p><img src="http://stage.vip/post-images/1584012584031.jpg" alt="" loading="lazy"><br>
+春江潮水连海平，海上明月共潮生</p>
+]]></summary>
+        <content type="html"><![CDATA[<p><img src="http://stage.vip/post-images/1584012584031.jpg" alt="" loading="lazy"><br>
+春江潮水连海平，海上明月共潮生</p>
+<!-- more -->
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>http://stage.vip/post/hello-gridea/</id>
