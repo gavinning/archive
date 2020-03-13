@@ -8,7 +8,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>阿里云监控Grafana插件安装配置 | F4</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1584016937980">
+<link rel="shortcut icon" href="/favicon.ico?v=1584071061396">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
 
@@ -198,6 +198,7 @@
 <ul>
 <li><a href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">准备工作</a></li>
 <li><a href="#ak%E9%9C%80%E8%A6%81base64%E5%8A%A0%E5%AF%86">AK需要BASE64加密</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3">参考文档</a></li>
 <li><a href="#%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%91%E6%8E%A7%E9%9D%A2%E6%9D%BF%E9%85%8D%E7%BD%AE">阿里云监控面板配置</a></li>
 </ul>
 </li>
@@ -503,15 +504,16 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>172<span class="pc-show">字数</span></span>
+      <span>198<span class="pc-show">字数</span></span>
     </span>
     
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <figure data-type="image" tabindex="1"><img src="https://stage.vip/post-images/1584012584031.jpg" alt="" loading="lazy"></figure>
-<!-- more -->
-<h3 id="准备工作">准备工作</h3>
+                <figure data-type="image" class="post-feature">
+                  <img src="https://stage.vip/post-images/aliyun-grafana.jpg" alt="">
+                </figure>
+                <h3 id="准备工作">准备工作</h3>
 <pre><code class="language-sh"># 进入docker主机 下载阿里云插件备用
 git clone https://github.com/aliyun/aliyun-cms-grafana.git
 
@@ -542,6 +544,11 @@ docker restart grafana
 toBase64(AK)
 toBase64(AS)
 </code></pre>
+<br />
+<h3 id="参考文档">参考文档</h3>
+<p><a href="https://www.alibabacloud.com/help/zh/doc-detail/109434.htm">阿里云参考文档</a><br>
+<a href="https://help.aliyun.com/document_detail/109434.html">阿里云参考文档</a><br>
+<a href="https://help.aliyun.com/document_detail/28616.html?spm=a2c4g.11186623.2.10.35cf3646Pw0jFd#section-xf3-lbv-zdb">阿里云云监控地址</a></p>
 <h3 id="阿里云监控面板配置">阿里云监控面板配置</h3>
 <p><a href="https://help.aliyun.com/document_detail/28619.html?spm=a2c4g.11186623.2.21.41563646HR21Y5#title-mwp-ec2-2c6">阿里云各产品接入Grafana参考文档</a></p>
 

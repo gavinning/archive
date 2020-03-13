@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://stage.vip</id>
     <title>F4</title>
-    <updated>2020-03-12T12:44:02.978Z</updated>
+    <updated>2020-03-13T03:45:57.684Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://stage.vip"/>
     <link rel="self" href="https://stage.vip/atom.xml"/>
@@ -16,11 +16,7 @@
         <link href="https://stage.vip/post/aliyun-grafana/">
         </link>
         <updated>2020-03-12T11:27:06.000Z</updated>
-        <summary type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://stage.vip/post-images/1584012584031.jpg" alt="" loading="lazy"></figure>
-]]></summary>
-        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://stage.vip/post-images/1584012584031.jpg" alt="" loading="lazy"></figure>
-<!-- more -->
-<h3 id="准备工作">准备工作</h3>
+        <content type="html"><![CDATA[<h3 id="准备工作">准备工作</h3>
 <pre><code class="language-sh"># 进入docker主机 下载阿里云插件备用
 git clone https://github.com/aliyun/aliyun-cms-grafana.git
 
@@ -51,6 +47,11 @@ docker restart grafana
 toBase64(AK)
 toBase64(AS)
 </code></pre>
+<br />
+<h3 id="参考文档">参考文档</h3>
+<p><a href="https://www.alibabacloud.com/help/zh/doc-detail/109434.htm">阿里云参考文档</a><br>
+<a href="https://help.aliyun.com/document_detail/109434.html">阿里云参考文档</a><br>
+<a href="https://help.aliyun.com/document_detail/28616.html?spm=a2c4g.11186623.2.10.35cf3646Pw0jFd#section-xf3-lbv-zdb">阿里云云监控地址</a></p>
 <h3 id="阿里云监控面板配置">阿里云监控面板配置</h3>
 <p><a href="https://help.aliyun.com/document_detail/28619.html?spm=a2c4g.11186623.2.21.41563646HR21Y5#title-mwp-ec2-2c6">阿里云各产品接入Grafana参考文档</a></p>
 ]]></content>
