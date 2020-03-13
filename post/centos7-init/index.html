@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>阿里云监控Grafana插件安装配置 | F4</title>
+<title>CENTOS7常规初始化 | F4</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1584072242175">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="阿里云监控Grafana插件安装配置" />
-    <meta name="keywords" content="grafana,aliyun" />
+    <meta name="description" content="CENTOS7常规初始化" />
+    <meta name="keywords" content="nginx,centos" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -196,10 +196,15 @@
 <ul>
 <li>
 <ul>
-<li><a href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">准备工作</a></li>
-<li><a href="#ak%E9%9C%80%E8%A6%81base64%E5%8A%A0%E5%AF%86">AK需要BASE64加密</a></li>
-<li><a href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3">参考文档</a></li>
-<li><a href="#%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%91%E6%8E%A7%E9%9D%A2%E6%9D%BF%E9%85%8D%E7%BD%AE">阿里云监控面板配置</a></li>
+<li><a href="#%E6%9B%B4%E6%96%B0%E7%B3%BB%E7%BB%9F">更新系统</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE">常规环境配置</a>
+<ul>
+<li><a href="#oh-my-zsh">oh-my-zsh</a></li>
+<li><a href="#nodejs">nodejs</a></li>
+<li><a href="#nginx">nginx</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">常见问题</a></li>
 </ul>
 </li>
 </ul>
@@ -465,8 +470,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://stage.vip/post/aliyun-grafana/">
-      阿里云监控Grafana插件安装配置
+    <a class="post-title-link" href="https://stage.vip/post/centos7-init/">
+      CENTOS7常规初始化
     </a>
   </h1>
   <div class="post-meta">
@@ -474,7 +479,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-03-12</span>
+      <span>2020-03-13</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -483,14 +488,14 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://stage.vip/tag/Vkjblqlbc/">
-              <span>grafana</span>
+            <a href="https://stage.vip/tag/Xxa8POjHc/">
+              <span>nginx</span>
             </a>、
           
         
           
-            <a href="https://stage.vip/tag/dy890KctU/">
-              <span>aliyun</span>
+            <a href="https://stage.vip/tag/gM_Gf8bWe/">
+              <span>centos</span>
             </a>
           
         
@@ -499,58 +504,67 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1分钟</span>
+      <span>2分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>198<span class="pc-show">字数</span></span>
+      <span>203<span class="pc-show">字数</span></span>
     </span>
     
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
                 <figure data-type="image" class="post-feature">
-                  <img src="https://stage.vip/post-images/aliyun-grafana.jpg" alt="">
+                  <img src="https://stage.vip/post-images/centos7-init.jpg" alt="">
                 </figure>
-                <h3 id="准备工作">准备工作</h3>
-<pre><code class="language-sh"># 进入docker主机 下载阿里云插件备用
-git clone https://github.com/aliyun/aliyun-cms-grafana.git
+                <h3 id="更新系统">更新系统</h3>
+<pre><code class="language-sh"># 更换系统源
+cd /etc/yum.repos.d
+mv CentOS-Base.repo CentOS-Base.repo.old
+curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 
-# 查看容器id
-docker ps
+yum clean all
+yum makecache
+yum update -y
 
-# 复制阿里云监控插件到grafana容器内
-docker cp aliyun-cms-grafana e3daced9bdcb:/var/lib/grafana/plugins/
-
-# 进入容器修改权限
-docker exec -u root -it grafana bash
-chown -R grafana:grafana aliyun-cms-grafana/
-
-# 重启容器
-docker restart grafana
-
-# 进入grafana面板，添加数据源
-# 选择刚添加的阿里云监控插件：【CMS Grafana Service】
-# 配置阿里云监控插件数据源
+# 修改 hostname
+hostnamectl set-hostname yourhostname
 </code></pre>
-<h3 id="ak需要base64加密">AK需要BASE64加密</h3>
-<pre><code class="language-js">function toBase64(str) {
-    const ret = Buffer.from(str).toString('base64')
-    console.log(ret)
-    return ret
-}
-
-toBase64(AK)
-toBase64(AS)
+<h3 id="常规环境配置">常规环境配置</h3>
+<pre><code class="language-sh">yum install zsh git lrzsz unzip tree -y
 </code></pre>
-<br />
-<h3 id="参考文档">参考文档</h3>
-<p><a href="https://www.alibabacloud.com/help/zh/doc-detail/109434.htm">阿里云参考文档</a><br>
-<a href="https://help.aliyun.com/document_detail/109434.html">阿里云参考文档</a><br>
-<a href="https://help.aliyun.com/document_detail/28616.html?spm=a2c4g.11186623.2.10.35cf3646Pw0jFd#section-xf3-lbv-zdb">阿里云云监控地址</a></p>
-<h3 id="阿里云监控面板配置">阿里云监控面板配置</h3>
-<p><a href="https://help.aliyun.com/document_detail/28619.html?spm=a2c4g.11186623.2.21.41563646HR21Y5#title-mwp-ec2-2c6">阿里云各产品接入Grafana参考文档</a></p>
+<h4 id="oh-my-zsh">oh-my-zsh</h4>
+<pre><code class="language-sh">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
+# oh-my-zsh 推荐使用主题 pygmalion
+sed -i '9s/|/ /' ~/.oh-my-zsh/themes/pygmalion.zsh-theme
+sed -i '10s/⇒/➜/' ~/.oh-my-zsh/themes/pygmalion.zsh-theme
+sed -i '11s/ZSH_THEME=&quot;robbyrussell&quot;/ZSH_THEME=&quot;pygmalion&quot;/' ~/.zshrc
+source ~/.zshrc
+</code></pre>
+<h4 id="nodejs">nodejs</h4>
+<pre><code class="language-sh">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+nvm install 12.14.1
+</code></pre>
+<h4 id="nginx">nginx</h4>
+<pre><code class="language-sh">yum info nginx
+yum install nginx -y
+
+nginx -t
+
+systemctl status nginx
+systemctl start nginx
+
+# nginx default work dir: /usr/share/nginx/html
+</code></pre>
+<h3 id="常见问题">常见问题</h3>
+<pre><code class="language-sh"># vim异常报错
+_arguments:451: _vim_files: function definition file not found
+
+# 解决方法
+rm ~/.zcompdump*
+exec zsh
+</code></pre>
 
               </div>
               <div class="post-footer">
@@ -561,7 +575,7 @@ toBase64(AS)
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://stage.vip/post/aliyun-grafana/" title="阿里云监控Grafana插件安装配置">阿里云监控Grafana插件安装配置</a>
+      <a href="https://stage.vip/post/centos7-init/" title="CENTOS7常规初始化">CENTOS7常规初始化</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -570,20 +584,20 @@ toBase64(AS)
   </ul>
   <div class="tags">
     
-      <a href="https://stage.vip/tag/Vkjblqlbc/"># grafana</a>
+      <a href="https://stage.vip/tag/Xxa8POjHc/"># nginx</a>
     
-      <a href="https://stage.vip/tag/dy890KctU/"># aliyun</a>
+      <a href="https://stage.vip/tag/gM_Gf8bWe/"># centos</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="CENTOS7常规初始化" href="https://stage.vip/post/centos7-init/">CENTOS7常规初始化</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="CENTOS7常规初始化" href="https://stage.vip/post/centos7-init/">上一篇</a>
-      
     </div>
     <div class="nav-next">
+      
+        <a class="nav-pc-next" title="阿里云监控Grafana插件安装配置" href="https://stage.vip/post/aliyun-grafana/">阿里云监控Grafana插件安装配置</a>
+        <a class="nav-mobile-next" title="阿里云监控Grafana插件安装配置" href="https://stage.vip/post/aliyun-grafana/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>

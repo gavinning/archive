@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://stage.vip</id>
     <title>F4</title>
-    <updated>2020-03-13T03:45:57.684Z</updated>
+    <updated>2020-03-13T04:04:27.795Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://stage.vip"/>
     <link rel="self" href="https://stage.vip/atom.xml"/>
@@ -10,6 +10,61 @@
     <logo>https://stage.vip/images/avatar.png</logo>
     <icon>https://stage.vip/favicon.ico</icon>
     <rights>All rights reserved 2020, F4</rights>
+    <entry>
+        <title type="html"><![CDATA[CENTOS7常规初始化]]></title>
+        <id>https://stage.vip/post/centos7-init/</id>
+        <link href="https://stage.vip/post/centos7-init/">
+        </link>
+        <updated>2020-03-13T03:48:32.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="更新系统">更新系统</h3>
+<pre><code class="language-sh"># 更换系统源
+cd /etc/yum.repos.d
+mv CentOS-Base.repo CentOS-Base.repo.old
+curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+
+yum clean all
+yum makecache
+yum update -y
+
+# 修改 hostname
+hostnamectl set-hostname yourhostname
+</code></pre>
+<h3 id="常规环境配置">常规环境配置</h3>
+<pre><code class="language-sh">yum install zsh git lrzsz unzip tree -y
+</code></pre>
+<h4 id="oh-my-zsh">oh-my-zsh</h4>
+<pre><code class="language-sh">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
+# oh-my-zsh 推荐使用主题 pygmalion
+sed -i '9s/|/ /' ~/.oh-my-zsh/themes/pygmalion.zsh-theme
+sed -i '10s/⇒/➜/' ~/.oh-my-zsh/themes/pygmalion.zsh-theme
+sed -i '11s/ZSH_THEME=&quot;robbyrussell&quot;/ZSH_THEME=&quot;pygmalion&quot;/' ~/.zshrc
+source ~/.zshrc
+</code></pre>
+<h4 id="nodejs">nodejs</h4>
+<pre><code class="language-sh">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+nvm install 12.14.1
+</code></pre>
+<h4 id="nginx">nginx</h4>
+<pre><code class="language-sh">yum info nginx
+yum install nginx -y
+
+nginx -t
+
+systemctl status nginx
+systemctl start nginx
+
+# nginx default work dir: /usr/share/nginx/html
+</code></pre>
+<h3 id="常见问题">常见问题</h3>
+<pre><code class="language-sh"># vim异常报错
+_arguments:451: _vim_files: function definition file not found
+
+# 解决方法
+rm ~/.zcompdump*
+exec zsh
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[阿里云监控Grafana插件安装配置]]></title>
         <id>https://stage.vip/post/aliyun-grafana/</id>
