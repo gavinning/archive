@@ -8,7 +8,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>CENTOS7常规初始化 | F4</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1584092319261">
+<link rel="shortcut icon" href="/favicon.ico?v=1605000208041">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
 
@@ -160,7 +160,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">2</span>
+        <span class="site-item-stat-count">3</span>
         <span class="site-item-stat-name">文章</span>
       </a>
     </div>
@@ -509,7 +509,7 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>203<span class="pc-show">字数</span></span>
+      <span>288<span class="pc-show">字数</span></span>
     </span>
     
   </div>
@@ -535,7 +535,7 @@ hostnamectl set-hostname yourhostname
 <pre><code class="language-sh">yum install zsh git lrzsz unzip tree -y
 </code></pre>
 <h4 id="oh-my-zsh">oh-my-zsh</h4>
-<pre><code class="language-sh">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
+<pre><code class="language-sh">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;
 # oh-my-zsh 推荐使用主题 pygmalion
 sed -i '9s/|/ /' ~/.oh-my-zsh/themes/pygmalion.zsh-theme
 sed -i '10s/⇒/➜/' ~/.oh-my-zsh/themes/pygmalion.zsh-theme
@@ -544,7 +544,7 @@ source ~/.zshrc
 </code></pre>
 <h4 id="nodejs">nodejs</h4>
 <pre><code class="language-sh">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
-nvm install 12.14.1
+nvm install 12.19.0
 </code></pre>
 <h4 id="nginx">nginx</h4>
 <pre><code class="language-sh">yum info nginx
@@ -564,6 +564,16 @@ _arguments:451: _vim_files: function definition file not found
 # 解决方法
 rm ~/.zcompdump*
 exec zsh
+</code></pre>
+<p>make: g++: Command not found</p>
+<pre><code class="language-sh">yum install gcc-c++
+</code></pre>
+<p>SSH登录断线时间：服务端修改 <code>etc/ssh/sshd_config</code></p>
+<pre><code class="language-sh"># server每隔60秒发送一次请求给client，然后client响应，从而保持连接
+ClientAliveInterval 60 
+
+# server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应
+ClientAliveCountMax 15 
 </code></pre>
 
               </div>
@@ -591,6 +601,10 @@ exec zsh
   </div>
   <div class="nav">
     <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="CENTOS7安装Docker" href="https://stage.vip/post/centos7-docker/">CENTOS7安装Docker</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="CENTOS7安装Docker" href="https://stage.vip/post/centos7-docker/">上一篇</a>
       
     </div>
     <div class="nav-next">

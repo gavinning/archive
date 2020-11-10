@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://stage.vip</id>
     <title>F4</title>
-    <updated>2020-03-13T10:47:00.706Z</updated>
+    <updated>2020-11-10T09:23:40.826Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://stage.vip"/>
     <link rel="self" href="https://stage.vip/atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>https://stage.vip/images/avatar.png</logo>
     <icon>https://stage.vip/favicon.ico</icon>
     <rights>All rights reserved 2020, F4</rights>
+    <entry>
+        <title type="html"><![CDATA[CENTOS7安装Docker]]></title>
+        <id>https://stage.vip/post/centos7-docker/</id>
+        <link href="https://stage.vip/post/centos7-docker/">
+        </link>
+        <updated>2020-03-14T13:27:28.000Z</updated>
+        <content type="html"><![CDATA[<p>centos7安装docker-ce</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CENTOS7常规初始化]]></title>
         <id>https://stage.vip/post/centos7-init/</id>
@@ -33,7 +42,7 @@ hostnamectl set-hostname yourhostname
 <pre><code class="language-sh">yum install zsh git lrzsz unzip tree -y
 </code></pre>
 <h4 id="oh-my-zsh">oh-my-zsh</h4>
-<pre><code class="language-sh">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
+<pre><code class="language-sh">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;
 # oh-my-zsh 推荐使用主题 pygmalion
 sed -i '9s/|/ /' ~/.oh-my-zsh/themes/pygmalion.zsh-theme
 sed -i '10s/⇒/➜/' ~/.oh-my-zsh/themes/pygmalion.zsh-theme
@@ -42,7 +51,7 @@ source ~/.zshrc
 </code></pre>
 <h4 id="nodejs">nodejs</h4>
 <pre><code class="language-sh">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
-nvm install 12.14.1
+nvm install 12.19.0
 </code></pre>
 <h4 id="nginx">nginx</h4>
 <pre><code class="language-sh">yum info nginx
@@ -62,6 +71,16 @@ _arguments:451: _vim_files: function definition file not found
 # 解决方法
 rm ~/.zcompdump*
 exec zsh
+</code></pre>
+<p>make: g++: Command not found</p>
+<pre><code class="language-sh">yum install gcc-c++
+</code></pre>
+<p>SSH登录断线时间：服务端修改 <code>etc/ssh/sshd_config</code></p>
+<pre><code class="language-sh"># server每隔60秒发送一次请求给client，然后client响应，从而保持连接
+ClientAliveInterval 60 
+
+# server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应
+ClientAliveCountMax 15 
 </code></pre>
 ]]></content>
     </entry>
