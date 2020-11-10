@@ -8,7 +8,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>CENTOS7常规初始化 | F4</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1605000273251">
+<link rel="shortcut icon" href="/favicon.ico?v=1605004652792">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
 
@@ -509,7 +509,7 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>288<span class="pc-show">字数</span></span>
+      <span>308<span class="pc-show">字数</span></span>
     </span>
     
   </div>
@@ -535,10 +535,16 @@ hostnamectl set-hostname yourhostname
 <pre><code class="language-sh">yum install zsh git lrzsz unzip tree -y
 </code></pre>
 <h4 id="oh-my-zsh">oh-my-zsh</h4>
-<pre><code class="language-sh">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;
+<pre><code class="language-sh"># via curl
+sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;
+
+# via wget
+sh -c &quot;$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;
+
 # oh-my-zsh 推荐使用主题 pygmalion
-sed -i '9s/|/ /' ~/.oh-my-zsh/themes/pygmalion.zsh-theme
-sed -i '10s/⇒/➜/' ~/.oh-my-zsh/themes/pygmalion.zsh-theme
+# sed -i '9s/|/ /' ~/.oh-my-zsh/themes/pygmalion.zsh-theme
+# sed -i '10s/⇒/➜/' ~/.oh-my-zsh/themes/pygmalion.zsh-theme
+
 sed -i '11s/ZSH_THEME=&quot;robbyrussell&quot;/ZSH_THEME=&quot;pygmalion&quot;/' ~/.zshrc
 source ~/.zshrc
 </code></pre>
