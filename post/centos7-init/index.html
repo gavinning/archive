@@ -8,7 +8,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>CENTOS7常规初始化 | F4</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1630558212426">
+<link rel="shortcut icon" href="/favicon.ico?v=1630559176738">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
 
@@ -504,12 +504,12 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2分钟</span>
+      <span>3分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>308<span class="pc-show">字数</span></span>
+      <span>393<span class="pc-show">字数</span></span>
     </span>
     
   </div>
@@ -550,7 +550,19 @@ source ~/.zshrc
 </code></pre>
 <h4 id="nodejs">nodejs</h4>
 <pre><code class="language-sh">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
-nvm install 12.19.0
+nvm install 14.17.6
+
+# 原生安装
+mkdir -p /usr/local/lib/pkg &amp;&amp; cd /usr/local/lib/pkg
+wget https://nodejs.org/dist/v14.17.6/node-v14.17.6-linux-x64.tar.xz
+xz -d node-v14.17.6-linux-x64.tar.xz
+tar xf node-v14.17.6-linux-x64.tar
+mv node-v14.17.6-linux-x64 ../node
+
+cd /usr/local/bin
+ln -s ../lib/node/bin/npm npm
+ln -s ../lib/node/bin/npx npx
+ln -s ../lib/node/bin/node node
 </code></pre>
 <h4 id="nginx">nginx</h4>
 <pre><code class="language-sh">yum info nginx

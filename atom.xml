@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://stage.vip</id>
     <title>F4</title>
-    <updated>2021-09-02T04:50:14.413Z</updated>
+    <updated>2021-09-02T05:06:36.580Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://stage.vip"/>
     <link rel="self" href="https://stage.vip/atom.xml"/>
@@ -48,7 +48,19 @@ source ~/.zshrc
 </code></pre>
 <h4 id="nodejs">nodejs</h4>
 <pre><code class="language-sh">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
-nvm install 12.19.0
+nvm install 14.17.6
+
+# 原生安装
+mkdir -p /usr/local/lib/pkg &amp;&amp; cd /usr/local/lib/pkg
+wget https://nodejs.org/dist/v14.17.6/node-v14.17.6-linux-x64.tar.xz
+xz -d node-v14.17.6-linux-x64.tar.xz
+tar xf node-v14.17.6-linux-x64.tar
+mv node-v14.17.6-linux-x64 ../node
+
+cd /usr/local/bin
+ln -s ../lib/node/bin/npm npm
+ln -s ../lib/node/bin/npx npx
+ln -s ../lib/node/bin/node node
 </code></pre>
 <h4 id="nginx">nginx</h4>
 <pre><code class="language-sh">yum info nginx
