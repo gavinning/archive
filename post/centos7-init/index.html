@@ -8,7 +8,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>CENTOS7常规初始化 | F4</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1630559176738">
+<link rel="shortcut icon" href="/favicon.ico?v=1630560632181">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
 
@@ -509,7 +509,7 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>393<span class="pc-show">字数</span></span>
+      <span>408<span class="pc-show">字数</span></span>
     </span>
     
   </div>
@@ -592,6 +592,9 @@ ClientAliveInterval 60
 
 # server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应
 ClientAliveCountMax 15 
+</code></pre>
+<p>生成sshkey</p>
+<pre><code class="language-sh">ssh-keygen -t rsa -b 2048 -C &quot;&lt;comment&gt;&quot;
 </code></pre>
 
               </div>
