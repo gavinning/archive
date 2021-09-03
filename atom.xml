@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://stage.vip</id>
     <title>F4</title>
-    <updated>2021-09-02T05:30:35.646Z</updated>
+    <updated>2021-09-03T06:23:48.765Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://stage.vip"/>
     <link rel="self" href="https://stage.vip/atom.xml"/>
@@ -93,6 +93,12 @@ ClientAliveCountMax 15
 </code></pre>
 <p>生成sshkey</p>
 <pre><code class="language-sh">ssh-keygen -t rsa -b 2048 -C &quot;&lt;comment&gt;&quot;
+</code></pre>
+<p>配置自定义指定sshkey <code>~/.ssh/config</code></p>
+<pre><code class="language-sh">Host gitlab.com
+    hostname gitlab.com
+    User git
+    IdentityFile ~/.ssh/deploy
 </code></pre>
 ]]></content>
     </entry>
