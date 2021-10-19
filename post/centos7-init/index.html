@@ -8,7 +8,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>CENTOS7常规初始化 | F4</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1631775319056">
+<link rel="shortcut icon" href="/favicon.ico?v=1634614243102">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
 
@@ -200,6 +200,7 @@
 <li><a href="#%E5%B8%B8%E8%A7%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE">常规环境配置</a>
 <ul>
 <li><a href="#oh-my-zsh">oh-my-zsh</a></li>
+<li><a href="#oh-my-zsh-from-gitee">oh-my-zsh -- from gitee</a></li>
 <li><a href="#nodejs">nodejs</a></li>
 <li><a href="#nginx">nginx</a></li>
 </ul>
@@ -515,7 +516,7 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>429<span class="pc-show">字数</span></span>
+      <span>464<span class="pc-show">字数</span></span>
     </span>
     
   </div>
@@ -553,6 +554,12 @@ sh -c &quot;$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/
 
 sed -i '11s/ZSH_THEME=&quot;robbyrussell&quot;/ZSH_THEME=&quot;pygmalion&quot;/' ~/.zshrc
 source ~/.zshrc
+</code></pre>
+<h4 id="oh-my-zsh-from-gitee">oh-my-zsh -- from gitee</h4>
+<pre><code class="language-sh">git clone https://gitee.com/mirrors/oh-my-zsh.git ~/.oh-my-zsh
+cp ~/.zshrc ~/.zshrc.orig
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+chsh -s $(which zsh)
 </code></pre>
 <h4 id="nodejs">nodejs</h4>
 <pre><code class="language-sh">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
