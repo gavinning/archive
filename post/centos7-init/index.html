@@ -8,7 +8,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>CENTOS7常规初始化 | F4</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1634614243102">
+<link rel="shortcut icon" href="/favicon.ico?v=1652253082314">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
 
@@ -516,7 +516,7 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>464<span class="pc-show">字数</span></span>
+      <span>518<span class="pc-show">字数</span></span>
     </span>
     
   </div>
@@ -576,6 +576,22 @@ cd /usr/local/bin
 ln -s ../lib/node/bin/npm npm
 ln -s ../lib/node/bin/npx npx
 ln -s ../lib/node/bin/node node
+
+
+# debian安装
+curl -sL https://deb.nodesource.com/setup_10.x | bash -
+# or
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+
+apt install nodejs -y
+
+
+# yum安装
+curl  -sL https://rpm.nodesource.com/setup_lts.x | bash -
+# or
+curl  -sL https://rpm.nodesource.com/setup_18.x | bash -
+
+yum install nodejs -y
 </code></pre>
 <h4 id="nginx">nginx</h4>
 <pre><code class="language-sh">yum info nginx

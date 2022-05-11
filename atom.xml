@@ -2,14 +2,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://stage.vip</id>
     <title>F4</title>
-    <updated>2021-10-19T03:34:57.769Z</updated>
+    <updated>2022-05-11T07:11:46.225Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://stage.vip"/>
     <link rel="self" href="https://stage.vip/atom.xml"/>
     <subtitle>温故而知新</subtitle>
     <logo>https://stage.vip/images/avatar.png</logo>
     <icon>https://stage.vip/favicon.ico</icon>
-    <rights>All rights reserved 2021, F4</rights>
+    <rights>All rights reserved 2022, F4</rights>
     <entry>
         <title type="html"><![CDATA[上线安全检查todo]]></title>
         <id>https://stage.vip/post/shang-xian-an-quan-jian-cha-todo/</id>
@@ -143,6 +143,22 @@ cd /usr/local/bin
 ln -s ../lib/node/bin/npm npm
 ln -s ../lib/node/bin/npx npx
 ln -s ../lib/node/bin/node node
+
+
+# debian安装
+curl -sL https://deb.nodesource.com/setup_10.x | bash -
+# or
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+
+apt install nodejs -y
+
+
+# yum安装
+curl  -sL https://rpm.nodesource.com/setup_lts.x | bash -
+# or
+curl  -sL https://rpm.nodesource.com/setup_18.x | bash -
+
+yum install nodejs -y
 </code></pre>
 <h4 id="nginx">nginx</h4>
 <pre><code class="language-sh">yum info nginx
